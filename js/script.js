@@ -53,27 +53,28 @@ window.addEventListener('load', () => {
 const mainImage = document.querySelector('.gallery-image img');
 const thumbImages = document.querySelectorAll('.gallery-thumbnails img');
 
-thumbImages.forEach((thumbImages)=>{
-  thumbImages.addEventListener('mouseover', (event) => {
+thumbImages.forEach((thumbImage)=>{
+  thumbImage.addEventListener('mouseover', (event) => {
     mainImage.src = event.target.src;
-    mainImage.animate({opacity: [0, 1]}, 500)
+    mainImage.animate({opacity: [0, 1]}, 500);
   });
 });
 
-//スライドメニュー
 const menuOpen = document.querySelector('#menu-open');
 const menuClose = document.querySelector('#menu-close');
 const menuPanel = document.querySelector('#menu-panel');
-const menuItems = document.querySelectorAll('#menu-panel li')
+const menuItems = document.querySelectorAll('#menu-panel li');
 const menuOptions = {
   duration: 1400,
   easing: 'ease',
   fill: 'forwards',
 };
 
-//メニューを開く
+// メニューを開く
 menuOpen.addEventListener('click', () => {
   menuPanel.animate({translate: ['100vw', 0]}, menuOptions);
+
+// リンクをひとつずつ順に表示
   menuItems.forEach((menuItem, index) => {
     menuItem.animate(
       {
@@ -86,14 +87,14 @@ menuOpen.addEventListener('click', () => {
         easing: 'ease',
         fill: 'forwards',
       }
-      );
+    );
   });
-})
+});
 
-//メニューを閉じる
+// メニューを閉じる
 menuClose.addEventListener('click', () => {
   menuPanel.animate({translate: [0, '100vw']}, menuOptions);
   menuItems.forEach((menuItem) => {
     menuItem.animate({opacity: [1, 0]}, menuOptions);
   });
-})
+});
