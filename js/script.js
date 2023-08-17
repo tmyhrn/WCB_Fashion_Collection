@@ -1,3 +1,4 @@
+/*ローディングから画面遷移*/
 const loadingAreaGrey = document.querySelector('#loading');
 const loadingAreaGreen = document.querySelector('#loading-screen');
 const loadingText = document.querySelector('#loading p');
@@ -35,11 +36,11 @@ window.addEventListener('load', () => {
     [
       {
         opacity: 1,
-        offset: .8  //80%
+        offset: .8
       },
       {
         opacity: 0,
-        offset: 1  //100%
+        offset: 1
       },
     ], 
     {
@@ -50,6 +51,7 @@ window.addEventListener('load', () => {
   );
 });
 
+/*画像ギャラリー*/
 const mainImage = document.querySelector('.gallery-image img');
 const thumbImages = document.querySelectorAll('.gallery-thumbnails img');
 
@@ -60,6 +62,7 @@ thumbImages.forEach((thumbImage)=>{
   });
 });
 
+/*スライドメニュー*/
 const menuOpen = document.querySelector('#menu-open');
 const menuClose = document.querySelector('#menu-close');
 const menuPanel = document.querySelector('#menu-panel');
@@ -73,7 +76,6 @@ const menuOptions = {
 // メニューを開く
 menuOpen.addEventListener('click', () => {
   menuPanel.animate({translate: ['100vw', 0]}, menuOptions);
-
 // リンクをひとつずつ順に表示
   menuItems.forEach((menuItem, index) => {
     menuItem.animate(
@@ -99,8 +101,7 @@ menuClose.addEventListener('click', () => {
   });
 });
 
-//スクロールで要素を表示
-
+/*スクロールで要素を表示*/
 const animateFade = (entries, obs) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -124,6 +125,7 @@ const animateFade = (entries, obs) => {
 //監視設定
 const  fadeObserver = new IntersectionObserver(animateFade);
 
+// .fadeinを監視するよう指示
 const fadeElements = document.querySelectorAll('.fadein');
 fadeElements.forEach((fadeElement) => {
   fadeObserver.observe(fadeElement);
